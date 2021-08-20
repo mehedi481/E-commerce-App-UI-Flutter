@@ -67,7 +67,18 @@ class _BodyState extends State<Body> {
                             borderRadius: BorderRadius.circular(15)),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      print(currentPage);
+                      switch (currentPage) {
+                        case 0:
+                          print("Page 1 detected");
+                          break;
+                        case 1:
+                          print("page 2 ");
+                          break;
+                        default: print("No page found");
+                      }
+                    },
                     child: Text("Continue"),
                   ),
                 ),
