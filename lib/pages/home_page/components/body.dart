@@ -1,6 +1,7 @@
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
 import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
 import 'package:e_commerce_app_ui/pages/home_page/components/splashComponent.dart';
+import 'package:e_commerce_app_ui/pages/signIn_page/signIn_page.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatefulWidget {
@@ -69,15 +70,7 @@ class _BodyState extends State<Body> {
                     ),
                     onPressed: () {
                       print(currentPage);
-                      switch (currentPage) {
-                        case 0:
-                          print("Page 1 detected");
-                          break;
-                        case 1:
-                          print("page 2 ");
-                          break;
-                        default: print("No page found");
-                      }
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SignInPage()));
                     },
                     child: Text("Continue"),
                   ),

@@ -12,10 +12,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'E-Commerce App Design',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
       home: HomePage(),
     );
   }
+}
+
+ThemeData theme() {
+  return ThemeData(
+    primarySwatch: Colors.blue,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.white,
+      elevation: 0.0,
+      iconTheme: IconThemeData(color: Colors.black),
+      brightness: Brightness.light,
+      textTheme: TextTheme(
+        headline6: TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+        ),
+      ),
+    ),
+  );
 }
