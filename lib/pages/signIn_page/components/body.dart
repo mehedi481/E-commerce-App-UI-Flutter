@@ -1,5 +1,6 @@
 import 'package:e_commerce_app_ui/components/textFormField.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
+import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -24,7 +25,31 @@ class Body extends StatelessWidget {
             "Sign in with your email and password or Continue with your social network",
             textAlign: TextAlign.center,
           ),
-          CustomTextFormField(),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 25,
+            ),
+            child: CustomTextFormField(),
+          ),
+          SizedBox(
+            width: ScreenSize.width * 0.9,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  kPrimaryColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+              ),
+              onPressed: () {},
+              child: Text("Sign in"),
+            ),
+          )
         ],
       ),
     ));

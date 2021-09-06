@@ -16,6 +16,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           text: "Email",
           icon: Icon(Icons.email),
         ),
+        SizedBox(
+          height: 25,
+        ),
         PasswordTextField(
           text: "Password",
           icon: Icon(Icons.password),
