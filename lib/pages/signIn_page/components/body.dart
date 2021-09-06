@@ -1,3 +1,4 @@
+import 'package:e_commerce_app_ui/components/textFormField.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -23,27 +24,9 @@ class Body extends StatelessWidget {
             "Sign in with your email and password or Continue with your social network",
             textAlign: TextAlign.center,
           ),
-          CustomTextFormField()
+          CustomTextFormField(),
         ],
       ),
     ));
-  }
-}
-
-class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({Key? key}) : super(key: key);
-
-  @override
-  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 320,
-      width: 320,
-      color: Colors.black,
-    );
   }
 }
