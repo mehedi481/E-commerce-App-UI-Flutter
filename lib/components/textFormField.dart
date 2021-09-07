@@ -1,6 +1,9 @@
+import 'package:e_commerce_app_ui/helpers/constants/constants.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
 import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
 import 'package:flutter/material.dart';
+
+import 'formError.dart';
 
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({Key? key}) : super(key: key);
@@ -11,34 +14,19 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final _formKey = GlobalKey<FormState>();
-  final List<String> error = ["Demo error"];
+  final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          EmailTextField(
-            text: "Email",
-            icon: Icon(Icons.email),
-          ),
+          emailTextField(),
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
-          PasswordTextField(
-            text: "Password",
-            icon: Icon(Icons.password),
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.warning,
-                color: Colors.red,
-              ),
-              SizedBox(width: 10),
-              Text(error[0])
-            ],
-          ),
+          passwordTextField(),
+          FormError(error: errors),
           SizedBox(
             width: ScreenSize.width * 0.9,
             child: ElevatedButton(
@@ -52,7 +40,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
+                }
+              },
               child: Text("Sign in"),
             ),
           )
@@ -60,24 +52,35 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
     );
   }
-}
 
-class PasswordTextField extends StatelessWidget {
-  const PasswordTextField({
-    Key? key,
-    this.text,
-    this.icon,
-  }) : super(key: key);
-  final text;
-  final icon;
-
-  @override
-  Widget build(BuildContext context) {
+  TextFormField passwordTextField() {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kPassNullError)) {
+          setState(() {
+            errors.remove(kPassNullError);
+          });
+        } else if (value.length >= 8 && errors.contains(kShortPassError)) {
+          setState(() {
+             errors.remove(kShortPassError);
+          });
+        }
+      },
+      validator: (value) {
+        if (value!.isEmpty && !errors.contains(kPassNullError)) {
+          setState(() {
+            errors.add(kPassNullError);
+          });
+        } else if (value.length < 8 && !errors.contains(kShortPassError)) {
+          setState(() {
+            errors.add(kShortPassError);
+          });
+        }
+      },
       obscureText: true,
       decoration: InputDecoration(
-        labelText: text,
-        hintText: text,
+        labelText: "Password",
+        hintText: "Password",
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -85,26 +88,40 @@ class PasswordTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           gapPadding: 10,
         ),
-        suffixIcon: icon,
+        suffixIcon: Icon(Icons.lock),
       ),
     );
   }
-}
 
-class EmailTextField extends StatelessWidget {
-  const EmailTextField({
-    Key? key,
-    this.text,
-    this.icon,
-  }) : super(key: key);
-  final text;
-  final icon;
-  @override
-  Widget build(BuildContext context) {
+  TextFormField emailTextField() {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+          setState(() {
+            errors.remove(kEmailNullError);
+          });
+        } else if (emailValidatorRegExp.hasMatch(value) &&
+            errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.remove(kInvalidEmailError);
+          });
+        }
+      },
+      validator: (value) {
+        if (value!.isEmpty && !errors.contains(kEmailNullError)) {
+          setState(() {
+            errors.add(kEmailNullError);
+          });
+        } else if (!emailValidatorRegExp.hasMatch(value) &&
+            !errors.contains(kInvalidEmailError)) {
+          setState(() {
+            errors.add(kInvalidEmailError);
+          });
+        }
+      },
       decoration: InputDecoration(
-        labelText: text,
-        hintText: text,
+        labelText: "Email",
+        hintText: "Email",
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -112,7 +129,7 @@ class EmailTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           gapPadding: 10,
         ),
-        suffixIcon: icon,
+        suffixIcon: Icon(Icons.email),
       ),
     );
   }

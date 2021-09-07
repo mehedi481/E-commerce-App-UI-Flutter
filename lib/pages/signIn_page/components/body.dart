@@ -1,6 +1,5 @@
 import 'package:e_commerce_app_ui/components/textFormField.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
-import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
