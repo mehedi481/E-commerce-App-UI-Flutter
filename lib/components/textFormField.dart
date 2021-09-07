@@ -15,6 +15,7 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final _formKey = GlobalKey<FormState>();
   final List<String> errors = [];
+  bool remember = false;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -22,11 +23,31 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Column(
         children: [
           emailTextField(),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
+          SizedBox(height: getProportionateScreenHeight(20)),
           passwordTextField(),
+          SizedBox(height: getProportionateScreenHeight(20)),
           FormError(error: errors),
+          SizedBox(height: getProportionateScreenHeight(20)),
+          Row(
+            children: [
+              Checkbox(
+                checkColor: Colors.white,
+                value: remember,
+                onChanged: (value) {
+                  setState(() {
+                    remember = value!;
+                  });
+                },
+                activeColor: kPrimaryColor,
+              ),
+              Text("Remember me"),
+              Spacer(),
+              Text(
+                "Forget Password",
+                style: TextStyle(decoration: TextDecoration.underline),
+              )
+            ],
+          ),
           SizedBox(
             width: ScreenSize.width * 0.9,
             child: ElevatedButton(
@@ -62,7 +83,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           });
         } else if (value.length >= 8 && errors.contains(kShortPassError)) {
           setState(() {
-             errors.remove(kShortPassError);
+            errors.remove(kShortPassError);
           });
         }
       },
