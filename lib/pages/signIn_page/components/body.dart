@@ -33,23 +33,6 @@ class Body extends StatelessWidget {
             ),
             child: CustomTextFormField(),
           ),
-          SizedBox(
-            width: ScreenSize.width * 0.9,
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  kPrimaryColor,
-                ),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
-              onPressed: () {},
-              child: Text("Sign in"),
-            ),
-          )
         ],
       ),
     ));

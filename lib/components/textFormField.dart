@@ -1,3 +1,5 @@
+import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
+import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -8,22 +10,54 @@ class CustomTextFormField extends StatefulWidget {
 }
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  final _formKey = GlobalKey<FormState>();
+  final List<String> error = ["Demo error"];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        EmailTextField(
-          text: "Email",
-          icon: Icon(Icons.email),
-        ),
-        SizedBox(
-          height: 25,
-        ),
-        PasswordTextField(
-          text: "Password",
-          icon: Icon(Icons.password),
-        ),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          EmailTextField(
+            text: "Email",
+            icon: Icon(Icons.email),
+          ),
+          SizedBox(
+            height: getProportionateScreenHeight(20),
+          ),
+          PasswordTextField(
+            text: "Password",
+            icon: Icon(Icons.password),
+          ),
+          Row(
+            children: [
+              Icon(
+                Icons.warning,
+                color: Colors.red,
+              ),
+              SizedBox(width: 10),
+              Text(error[0])
+            ],
+          ),
+          SizedBox(
+            width: ScreenSize.width * 0.9,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  kPrimaryColor,
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+              ),
+              onPressed: () {},
+              child: Text("Sign in"),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -40,6 +74,7 @@ class PasswordTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: true,
       decoration: InputDecoration(
         labelText: text,
         hintText: text,
