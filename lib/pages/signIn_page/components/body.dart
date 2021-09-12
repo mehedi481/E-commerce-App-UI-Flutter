@@ -16,15 +16,24 @@ class Body extends StatelessWidget {
         children: [
           Column(
             children: [
+              SizedBox(
+                height: getProportionateScreenHeight(35),
+              ),
               Text(
                 "Welcome Back",
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(28),
                 ),
               ),
+              SizedBox(
+                height: getProportionateScreenHeight(25)
+              ),
               Text(
                 "Sign in with your email and password or Continue with your social network",
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(55),
               ),
               Padding(
                 padding: const EdgeInsets.only(

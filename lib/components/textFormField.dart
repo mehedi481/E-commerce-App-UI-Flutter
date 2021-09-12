@@ -49,6 +49,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ],
           ),
           SizedBox(
+            height: getProportionateScreenHeight(45),
+          ),
+          SizedBox(
             width: ScreenSize.width * 0.9,
             child: ElevatedButton(
               style: ButtonStyle(
