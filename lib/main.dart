@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'pages/home_page/homePage.dart';
 
 void main() {
@@ -25,12 +26,10 @@ ThemeData theme() {
       backgroundColor: Colors.white,
       elevation: 0.0,
       iconTheme: IconThemeData(color: Colors.black),
-      brightness: Brightness.light,
-      textTheme: TextTheme(
-        headline6: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-        ),
+      systemOverlayStyle: SystemUiOverlayStyle.light,
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 16,
       ),
     ),
   );
