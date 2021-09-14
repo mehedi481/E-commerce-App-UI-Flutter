@@ -1,8 +1,8 @@
 import 'package:e_commerce_app_ui/helpers/constants/constants.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
 import 'package:e_commerce_app_ui/helpers/themes/themes.dart';
+import 'package:e_commerce_app_ui/pages/forget/forget_page.dart';
 import 'package:flutter/material.dart';
-
 import 'formError.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -42,9 +42,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ),
               Text("Remember me"),
               Spacer(),
-              Text(
-                "Forget Password",
-                style: TextStyle(decoration: TextDecoration.underline),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ForgetPage()));
+                },
+                child: Text(
+                  "Forget Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               )
             ],
           ),
