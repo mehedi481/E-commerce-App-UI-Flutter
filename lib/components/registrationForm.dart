@@ -1,4 +1,5 @@
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
+import 'package:e_commerce_app_ui/pages/complete_profile/complete_profile_form.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
@@ -39,7 +40,16 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
         ),
         SizedBox(height: getProportionateScreenHeight(25)),
-        defaultButton(text: "Continue", onPress: () {}),
+        defaultButton(
+            text: "Continue",
+            onPress: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CompleteProfilePage(),
+                ),
+              );
+            }),
       ],
     );
   }

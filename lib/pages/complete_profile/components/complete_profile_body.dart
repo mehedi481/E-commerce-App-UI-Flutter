@@ -1,10 +1,9 @@
-import 'package:e_commerce_app_ui/components/registrationForm.dart';
-import 'package:e_commerce_app_ui/components/socialCard.dart';
+import 'package:e_commerce_app_ui/components/complete_profile_form.dart';
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
-class RegisterBody extends StatelessWidget {
-  const RegisterBody({Key? key}) : super(key: key);
+class CompleteProfileBody extends StatelessWidget {
+  const CompleteProfileBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class RegisterBody extends StatelessWidget {
               height: getProportionateScreenHeight(15),
             ),
             Text(
-              "Registrer Account",
+              "Complete Profile",
               style: TextStyle(
                 fontSize: getProportionateScreenWidth(25),
                 fontWeight: FontWeight.bold,
@@ -34,30 +33,16 @@ class RegisterBody extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(
-              height: ScreenSize.height! * 0.09,
+              height: getProportionateScreenHeight(35),
             ),
             Padding(
-              padding: const EdgeInsets.only(left:10.0,right: 10),
-              child: RegisterForm(),
-            ),
-            SizedBox(
-              height: getProportionateScreenHeight(25),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SocialCard(icon: Icons.email, press: () {}),
-                SocialCard(icon: Icons.facebook, press: () {}),
-                SocialCard(icon: Icons.email, press: () {}),
-              ],
-            ),
-            SizedBox(
-              height: getProportionateScreenHeight(25),
+              padding: const EdgeInsets.only(left: 10.0, right: 10),
+              child: CompleteProfileForm(),
             ),
             Text(
-              "By continuing your confirm that you agree\n with our Term and Condition",
+              "By Continuing confirm that you agree \n with our Term and Conditions",
               textAlign: TextAlign.center,
-            )
+            ),
           ],
         ),
       ),
