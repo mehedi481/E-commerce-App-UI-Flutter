@@ -1,4 +1,5 @@
 import 'package:e_commerce_app_ui/helpers/size_config/size_config.dart';
+import 'package:e_commerce_app_ui/pages/otp_page/otp.dart';
 import 'package:flutter/material.dart';
 import '../main.dart';
 
@@ -55,7 +56,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           height: getProportionateScreenHeight(35),
         ),
         defaultButton(
-          onPress: () {},
+          onPress: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => OTP()));
+          },
           text: "Continue",
         ),
       ],
