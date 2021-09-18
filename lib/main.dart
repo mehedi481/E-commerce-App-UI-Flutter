@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'helpers/size_config/size_config.dart';
+import 'helpers/themes/themes.dart';
 import 'pages/home_page/homePage.dart';
 
 void main() {
@@ -31,6 +34,40 @@ ThemeData theme() {
         color: Colors.black,
         fontSize: 16,
       ),
+    ),
+  );
+}
+
+InputDecoration inputDecoration({String? text, String? hintText, Icon? icon}) {
+  return InputDecoration(
+    labelText: text,
+    hintText: hintText,
+    suffixIcon: icon,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 35, vertical: 20),
+    floatingLabelBehavior: FloatingLabelBehavior.always,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(16),
+      gapPadding: 10,
+    ),
+  );
+}
+
+SizedBox defaultButton({String? text,onPress}) {
+  return SizedBox(
+    width: ScreenSize.width * 0.9,
+    child: ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(
+          kPrimaryColor,
+        ),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
+      onPressed: onPress,
+      child: Text("$text"),
     ),
   );
 }
