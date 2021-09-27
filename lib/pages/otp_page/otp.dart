@@ -8,7 +8,7 @@ class OTP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("OTP"),),
+      appBar: AppBar(title: Text("OTP Verifiaction"),),
       body: OTPBody(),
     );
   }
